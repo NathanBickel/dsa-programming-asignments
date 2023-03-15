@@ -17,5 +17,5 @@ This time will be in nanoseconds.
 
 To run:
 1. Create a file "input.txt" in the current directory
-2. `javac Solution.java`
-3. `java Solution.java`
+2. Run `javac Solution.java`
+3. Run `java Solution.java`
