@@ -15,9 +15,28 @@ public class Solution {
         createOutput("output.txt");
     }
 
+    private static void readInput(String fileName) {
+        try {
+            Scanner fileReader = new Scanner(
+                new File(fileName)); // Try to open file
+            // Determine n
+            n = 0;
+            while (fileReader.hasNext()) {
+                n++;
+                fileReader.next();
+            }
+            list = new double[n]; // Initialize matrix
+            fileReader = new Scanner(new File(fileName)); // Open file again
+            for (int k = 0; k < n; k++)
+                list[k] = fileReader.nextDouble(); // Populate matrix
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     // Watched https://www.youtube.com/watch?v=XE4VP_8Y0BU for explanation
     // Sorts `list` from l to r, inclusive
-    public static void quickSort(double[] list, int l, int r) {
+    private static void quickSort(double[] list, int l, int r) {
         if (r - l <= 0)
             // We're done
             return;
@@ -47,28 +66,11 @@ public class Solution {
         quickSort(list, l, j - 1);
         quickSort(list, j + 1, r);
     }
-    
-    private static void readInput(String fileName) {
-        try {
-            Scanner fileReader = new Scanner(new File(fileName)); // Try to open file
-            // Determine n
-            n = 0;
-            while (fileReader.hasNext()) {
-                n++;
-                fileReader.next();
-            }
-            list = new double[n]; // Initialize matrix
-            fileReader = new Scanner(new File(fileName)); // Open file again
-            for (int k = 0; k < n; k++)
-                list[k] = fileReader.nextDouble(); // Populate matrix
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     private static void createOutput(String fileName) {
         try {
-            PrintWriter fileWriter = new PrintWriter(new FileOutputStream(new File(fileName)));
+            PrintWriter fileWriter = new PrintWriter(
+                new FileOutputStream(new File(fileName)));
             for (int k = 0; k < n - 1; k++)
                 fileWriter.print(list[k] + " ");
             if (list.length > 0)
