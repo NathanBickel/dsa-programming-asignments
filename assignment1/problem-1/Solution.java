@@ -7,14 +7,15 @@ public class Solution {
 
     public static int n;
     public static boolean[][] matrix;
+    public static int runTime;
 
     public static void main(String[] args) {
         populateMatrix("input.txt");
         long startTime = System.nanoTime();
         String topology = determineTopology();
         long endTime = System.nanoTime();
-        outputTopology("output.txt", topology 
-            + "\n" + (int)(endTime - startTime) + " nanoseconds");
+        runTime = (int)(endTime - startTime);
+        outputTopology("output.txt", topology);
     }
 
     private static void populateMatrix(String fileName) {
@@ -145,6 +146,7 @@ public class Solution {
         try {
             PrintWriter fileWriter = new PrintWriter(new FileOutputStream(new File(fileName)));
             fileWriter.println(topology);
+            fileWriter.println(runTime + " nanoseconds");
             fileWriter.close();
         } catch (Exception e) {
             e.printStackTrace();
