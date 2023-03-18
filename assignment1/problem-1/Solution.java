@@ -31,7 +31,9 @@ public class Solution {
             fileReader = new Scanner(new File(fileName)); // Open file again
             for (int r = 0; r < n; r++)
                 for (int c = 0; c < n; c++)
-                    matrix[r][c] = fileReader.nextBoolean(); // Populate matrix
+                    // Populate matrix
+                    matrix[r][c] = fileReader.nextInt() == 1;
+                
         } catch (Exception e) {
             e.printStackTrace();
         }
