@@ -62,7 +62,6 @@ public class Solution {
             }
             fileWriter.println(runTime + " nanoseconds");
             fileWriter.close();
-            fileWriter.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
